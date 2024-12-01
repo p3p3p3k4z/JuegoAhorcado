@@ -11,75 +11,81 @@ let palabraOculta = [];
 let letrasIncorrectas = [];
 let intentosRestantes = 6;
 let ctx = document.getElementById("hangman-canvas").getContext("2d");
-let juegoFinalizado = false; // Variable para controlar si el juego terminó
+let juegoFinalizado = false; 
+let vidas = 5;
 
 function iniciarJuego(diccionariosSeleccionados = Object.keys(diccionarios)) {
-    // Limpiar el lienzo antes de iniciar un nuevo juego
-    ctx.clearRect(0, 0, 200, 200);
-
-    // El resto de la lógica sigue igual
     const diccionarioSeleccionado = diccionariosSeleccionados[Math.floor(Math.random() * diccionariosSeleccionados.length)];
     const palabras = diccionarios[diccionarioSeleccionado];
     palabraSeleccionada = palabras[Math.floor(Math.random() * palabras.length)];
 
-    // Inicializar el estado del juego
     palabraOculta = Array(palabraSeleccionada.length).fill("_");
     letrasIncorrectas = [];
     intentosRestantes = 6;
+
+    if (vidas === 0) {
+        vidas = 5; // Resetea vidas si el jugador perdió
+    }
     juegoFinalizado = false;
 
-    // Mostrar palabra oculta y mensaje
     document.getElementById("word-display").textContent = palabraOculta.join(" ");
     document.getElementById("message").textContent = `Diccionario: ${diccionarioSeleccionado}`;
     document.getElementById("wrong-letters").textContent = "Letras incorrectas: ";
     document.getElementById("attempts-left").textContent = `Intentos restantes: ${intentosRestantes}`;
-    
-    // Activar entrada de letras
+    document.getElementById("lives-left").textContent = `Vidas restantes: ${vidas}`;
+
     document.getElementById("letter-input").disabled = false;
-    document.getElementById("guess-button").disabled = false; 
+    document.getElementById("guess-button").disabled = false;
 }
 
 
+
 function manejarLetra(letra) {
-    if (juegoFinalizado) return; // Si el juego ya terminó, no se procesan más letras
+    if (juegoFinalizado) return;
 
     if (palabraSeleccionada.includes(letra)) {
-        // Actualizar la palabra oculta con la letra correcta
         for (let i = 0; i < palabraSeleccionada.length; i++) {
             if (palabraSeleccionada[i] === letra) {
                 palabraOculta[i] = letra;
             }
         }
     } else {
-        // Si la letra es incorrecta
         if (!letrasIncorrectas.includes(letra)) {
             letrasIncorrectas.push(letra);
-            intentosRestantes--; // Restar un intento
-            drawHangman(6 - intentosRestantes); // Llamada para dibujar el ahorcado según intentos restantes
+            intentosRestantes--;
+            drawHangman(6 - intentosRestantes);
         }
     }
 
-    // Actualizar la interfaz
     document.getElementById("word-display").textContent = palabraOculta.join(" ");
     document.getElementById("wrong-letters").textContent = `Letras incorrectas: ${letrasIncorrectas.join(", ")}`;
     document.getElementById("attempts-left").textContent = `Intentos restantes: ${intentosRestantes}`;
 
-    // Comprobar si se ganó o perdió
     if (!palabraOculta.includes("_")) {
         document.getElementById("message").textContent = "¡Ganaste!";
-        juegoFinalizado = true; // Se finaliza el juego cuando se gana
-    } else if (intentosRestantes <= 0) {
-        document.getElementById("message").textContent = `¡Perdiste! La palabra era: ${palabraSeleccionada}`;
-        juegoFinalizado = true; // Se finaliza el juego cuando se pierden los intentos
-    }
+        juegoFinalizado = true;
+    }else if (intentosRestantes <= 0) {
+        vidas--;
+        document.getElementById("lives-left").textContent = `Vidas restantes: ${vidas}`;
+            
+        if (vidas > 0) {
+            clearCanvas(); 
+            intentosRestantes = 6;
+            letrasIncorrectas = [];
+            document.getElementById("message").textContent = "Perdiste una vida. Nueva palabra.";
+            iniciarJuego();
+         } else {
+            document.getElementById("message").textContent = `¡Perdiste! Se acabaron tus vidas. La palabra era: ${palabraSeleccionada}`;
+            juegoFinalizado = true;
+            }
+        }
+        
 
-    // Desactivar la entrada de letras cuando el juego termina
     if (juegoFinalizado) {
         document.getElementById("letter-input").disabled = true;
-        document.getElementById("guess-button").disabled = true; // Si tienes un botón para hacer el intento
+        document.getElementById("guess-button").disabled = true;
     }
 }
-
 
 // Función para verificar si se presionó Enter
 function checkEnter(event) {
@@ -95,40 +101,6 @@ function checkEnter(event) {
         }
 
         input.value = ""; // Limpiar el campo
-    }
-}
-
-// Función para dibujar el ahorcado
-function drawHangman(errors) {
-    if (errors === 1) {
-        ctx.beginPath();
-        ctx.arc(100, 40, 20, 0, Math.PI * 2);
-        ctx.stroke();
-    } else if (errors === 2) {
-        ctx.beginPath();
-        ctx.moveTo(100, 60);
-        ctx.lineTo(100, 120);
-        ctx.stroke();
-    } else if (errors === 3) {
-        ctx.beginPath();
-        ctx.moveTo(100, 80);
-        ctx.lineTo(80, 100);
-        ctx.stroke();
-    } else if (errors === 4) {
-        ctx.beginPath();
-        ctx.moveTo(100, 80);
-        ctx.lineTo(120, 100);
-        ctx.stroke();
-    } else if (errors === 5) {
-        ctx.beginPath();
-        ctx.moveTo(100, 120);
-        ctx.lineTo(80, 150);
-        ctx.stroke();
-    } else if (errors === 6) {
-        ctx.beginPath();
-        ctx.moveTo(100, 120);
-        ctx.lineTo(120, 150);
-        ctx.stroke();
     }
 }
 
