@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego - Ahorcado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="container text-center mt-4">
+        <h1>Juego del Ahorcado</h1>
+        <div id="game-container" class="mt-4">
+            <!-- Mostrar la palabra oculta -->
+            <p id="word-display" class="fs-4">_ _ _ _ _</p>
+            <!-- Mostrar el diccionario seleccionado -->
+            <p id="message" class="text-success"></p>
+            <!-- Entrada para adivinar letras -->
+            <div id="input-container" class="mt-3">
+                <input 
+                    type="text" 
+                    id="letter-input" 
+                    maxlength="1" 
+                    class="form-control w-25 mx-auto" 
+                    placeholder="Ingresa una letra"
+                    onkeypress="checkEnter(event)"
+                >
+            </div>
+            <!-- Mostrar el número de intentos restantes -->
+            <p id="attempts-left" class="text-danger fs-4">Intentos restantes: 6</p>
+            <!-- Canvas para el dibujo del ahorcado -->
+            <canvas id="hangman-canvas" width="200" height="200" class="mt-3"></canvas>
+            <!-- Mostrar letras incorrectas -->
+            <p id="wrong-letters" class="mt-3">Letras incorrectas: </p>
+        </div>
+        <!-- Botón para reiniciar el juego -->
+        <button class="btn btn-primary mt-4" onclick="reiniciarJuego()">Reiniciar Juego</button>
+        <!-- Botón para regresar al menú -->
+        <button class="btn btn-secondary mt-4" onclick="goBack()">Regresar al Menú</button>
+    </div>
+
+    <!-- Importar los archivos JavaScript -->
+    <script src="../js/juego.js"></script>
+    <script>
+        // Función para regresar al menú
+        function goBack() {
+            window.location.href = './index.html';
+        }
+
+        // Iniciar el juego al cargar la página
+        iniciarJuego();
+    </script>
+</body>
+</html>
