@@ -2,26 +2,102 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f4f4f9;
+    background-image: url('https://images.pexels.com/photos/692357/pexels-photo-692357.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     color: #333;
 }
 
+/* Contenedor principal */
 #game-container {
     margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Título con efecto de desvanecimiento */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #444; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Invisible al inicio */
+    animation: fadeIn 2s ease-in forwards; /* Efecto de desvanecimiento */
+    margin-bottom: 30px;
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Ligeramente arriba */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+/* Visualización de la palabra */
 #word-display {
     font-size: 24px;
     letter-spacing: 5px;
+    color: #444;
+    font-weight: bold;
 }
 
+/* Canvas para el ahorcado */
 #hangman-canvas {
     border: 1px solid #ddd;
     margin: 20px auto;
     display: block;
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Entrada de letras */
 #letter-input {
     font-size: 18px;
     text-align: center;
     margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botones */
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px 10px 0 10px; /* Espaciado adicional hacia abajo */
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #FF8000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #4C1F7A;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #219B9D;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #1e88e5;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
