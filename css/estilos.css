@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+#game-container {
+    margin-top: 20px;
+}
+
+#word-display {
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+
+#hangman-canvas {
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    display: block;
+}
+
+#letter-input {
+    font-size: 18px;
+    text-align: center;
+    margin-right: 10px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas del Juego</title>
+    <!-- Enlazamos el CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Personalización de estilos -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #343a40;
+        }
+
+        .card {
+            margin-top: 30px;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1 class="text-center">Estadísticas del Juego</h1>
+        <p class="text-center" id="num-juegos" style="font-size: 20px;">Número de juegos jugados: 0</p>
+
+        <!-- Card para mostrar las estadísticas -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Detalles</h5>
+                <p class="card-text">Aquí podrás ver el número de veces que has jugado al juego.</p>
+                <button id="reset-button" class="btn btn-custom">Reiniciar Estadísticas</button>
+            </div>
+        </div>
+
+        <!-- Script para manejar el almacenamiento de juegos -->
+        <script>
+            // Obtener el valor de n_juegos desde localStorage
+            const nJuegos = localStorage.getItem("n_juegos");
+
+            // Si n_juegos está almacenado, lo mostramos
+            if (nJuegos !== null) {
+                document.getElementById("num-juegos").textContent = `Número de juegos jugados: ${nJuegos}`;
+            } else {
+                document.getElementById("num-juegos").textContent = "No se ha jugado ningún juego aún.";
+            }
+
+            // Función para resetear las estadísticas
+            document.getElementById("reset-button").addEventListener("click", () => {
+                localStorage.setItem("n_juegos", 0);
+                document.getElementById("num-juegos").textContent = "Número de juegos jugados: 0";
+            });
+        </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
