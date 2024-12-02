@@ -1,4 +1,3 @@
-// Diccionarios disponibles y lógica del juego
 const diccionarios = {
     frutas: ["manzana", "pera", "uva", "platano", "fresa"],
     animales: ["gato", "perro", "elefante", "jirafa", "caballo"],
@@ -22,7 +21,6 @@ if (localStorage.getItem("n_juegos") !== null) {
     n_juegos = 0; // Si no existe, iniciar en 0
 }
 
-// Función para iniciar el juego
 function iniciarJuego(diccionariosSeleccionados = Object.keys(diccionarios)) {
     const diccionarioSeleccionado = diccionariosSeleccionados[Math.floor(Math.random() * diccionariosSeleccionados.length)];
     const palabras = diccionarios[diccionarioSeleccionado];
@@ -102,7 +100,6 @@ function manejarLetra(letra) {
     }
 }
 
-// Función para verificar si se presionó Enter
 function checkEnter(event) {
     if (event.key === "Enter") {
         const input = document.getElementById("letter-input");
