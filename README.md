@@ -27,9 +27,8 @@ Aquí tienes una captura del proyecto en funcionamiento:
 
 ## **Enlace al Proyecto**
 Puedes probar el juego del ahorcado en el siguiente enlace:  
-[**Jugar al Juego del Ahorcado**](URL)
+[**Jugar al Juego del Ahorcado**](https://p3p3p3k4z.github.io/JuegoAhorcado/)
 
-*(Reemplaza "URL" con el enlace a tu página o repositorio desplegado, si aplica).*
 
 ---
 
