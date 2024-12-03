@@ -1,7 +1,7 @@
 # **Juego del Ahorcado**
 
 Este proyecto fue desarrollado como parte de la materia **"Programación Web"**, implementando los conocimientos adquiridos en clase. Aunque el juego parece sencillo, cumple con los requisitos mínimos establecidos para la asignatura.
-
+Es un juego del ahorcado simple de toda la vida. Pero cada jugada se genera una nueva palabra ;)
 ---
 
 ## **Características**
