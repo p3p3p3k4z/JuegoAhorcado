@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas del Juego</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/estilo_carta.css">
+</head>
+
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1 class="text-center">Estadísticas del Juego</h1>
+        <p class="text-center" id="num-juegos" style="font-size: 20px;">Número de juegos jugados: 0</p>
+
+        <!-- Card para mostrar las estadísticas -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Detalles</h5>
+                <p class="card-text">Aquí podrás ver el número de veces que has jugado al juego.</p>
+                <button id="reset-button" class="btn btn-custom">Reiniciar Estadísticas</button>
+            </div>
+            <button class="btn btn-secondary mt-4" onclick="goBack()">Regresar al Menú</button>
+        </div>
+
+        <!-- Script para manejar el almacenamiento de juegos -->
+        <script>
+          const nJuegos = parseInt(localStorage.getItem("n_juegos")) || 0;
+		  document.getElementById("num-juegos").textContent = `Número de juegos jugados: ${nJuegos}`;
+
+
+            // Si n_juegos está almacenado, lo mostramos
+            if (nJuegos !== null) {
+                document.getElementById("num-juegos").textContent = `Número de juegos jugados: ${nJuegos}`;
+            } else {
+                document.getElementById("num-juegos").textContent = "No se ha jugado ningún juego aún.";
+            }
+
+            // Función para resetear las estadísticas
+            document.getElementById("reset-button").addEventListener("click", () => {
+                localStorage.setItem("n_juegos", 0);
+                document.getElementById("num-juegos").textContent = "Número de juegos jugados: 0";
+            });
+            
+         function goBack() {
+            window.location.href = '../index.html';
+			}
+        </script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

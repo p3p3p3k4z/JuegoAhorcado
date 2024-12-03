@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+    background-image: url('../imagen/pinguinos.jpg'); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+}
+
+#game-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+    /* Implementación de Flexbox */
+    display: flex;
+    flex-direction: column; /* Los elementos se organizan verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+/* Título con efecto de desvanecimiento */
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #444; 
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    opacity: 0; /* Invisible al inicio */
+    animation: fadeIn 2s ease-in forwards; /* Efecto de desvanecimiento */
+    margin-bottom: 30px;
+}
+
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Ligeramente arriba */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Posición final */
+    }
+}
+
+/* Visualización de la palabra */
+#word-display {
+    font-size: 24px;
+    letter-spacing: 5px;
+    color: #444;
+    font-weight: bold;
+}
+
+/* Canvas para el ahorcado */
+#hangman-canvas {
+    border: 1px solid #ddd;
+    margin: 20px auto;
+    display: block;
+    background: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Entrada de letras */
+#letter-input {
+    font-size: 18px;
+    text-align: center;
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botones */
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px 10px 0 10px; /* Espaciado adicional hacia abajo */
+    cursor: pointer;
+
+    /* Uso de Flexbox para alinear los botones */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón Primario */
+.btn-primary {
+    background-color: #FF8000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #4C1F7A;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón Secundario */
+.btn-secondary {
+    background-color: #219B9D;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #1e88e5;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries para adaptabilidad */
+
+/* Para pantallas pequeñas (dispositivos móviles) */
+@media (max-width: 600px) {
+    #game-container {
+        padding: 15px; /* Menos padding en pantallas pequeñas */
+        margin-top: 10px;
+    }
+
+    h1 {
+        font-size: 2rem; /* Reduce el tamaño del título */
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        font-size: 1rem; /* Botones más pequeños */
+        padding: 8px 15px; /* Botones más pequeños */
+        margin: 20px 5px; /* Espaciado reducido */
+    }
+
+    #letter-input {
+        font-size: 16px; /* Entrada de letras más pequeña */
+        width: 80%; /* Hacer el input más grande en pantallas pequeñas */
+    }
+}
+
+/* Para pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 900px) {
+    #game-container {
+        padding: 20px;
+        margin-top: 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Título ajustado */
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 9px 18px;
+        margin: 25px 8px;
+    }
+}
+
+/* Para pantallas grandes (escritorios) */
+@media (min-width: 901px) {
+    #game-container {
+        padding: 30px;
+        margin-top: 30px;
+    }
+
+    h1 {
+        font-size: 3rem; /* Título más grande */
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        margin: 30px 10px;
+    }
+}
