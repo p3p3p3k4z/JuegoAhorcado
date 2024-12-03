@@ -7,7 +7,6 @@ Este proyecto fue desarrollado como parte de la materia **"Programación Web"**,
 ## **Características**
 - Interfaz amigable y sencilla para jugar.
 - Implementación de mecánicas clásicas del juego del ahorcado.
-- Código estructurado y fácil de mantener.
 
 ---
 
